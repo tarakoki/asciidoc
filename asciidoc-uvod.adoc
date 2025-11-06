@@ -1,0 +1,179 @@
+= Uvod u AsciiDoc
+Tara Kokic, Sveučilište u Zadru <tkokic25@unizd.hr>
+:revdate: 2025-11-06 
+:doctype: article
+:toc: 
+:toclevels: 3
+:icons: font
+:source-highliter: highlightjs
+:sectnums: 
+:imagesdir: img/
+:stem:
+
+[abstract]
+== Sažetak
+Ovaj dokument objašnjava **osnovne principe AsciiDoc** sintakse. Namijenjen je studentima koji već poznaju Markdown, ali žele naučiti alat koji nudi više mogućnosti za strukturiranje i oblikovanje akademskog i tehničkog teksta.
+
+== Što je AsciiDoc
+AsciiDoc je *plain-text* format za pisanje strukturiranih dokumenata. Tekst je lako čitljiv u izvornom obliku i može se pretvoriti u *HTML*, *PDF* ili *DOCX* pomoću alata *Asciidoctor*.
+
+=== Glavne prednosti u odnosu na Markdown
+- podržava naslove svih razina (`=`, `==`, `===`)
+- automatski izrađuje sadržaj i numerira poglavlja
+- koristi *atribute i varijable*
+- jednostavno dodaje __fusnote__, __tablice__, _citate_ i _blokove koda_
+
+== Struktura dokumenta
+Na početku se obično nalazi naslov, autor, datum i osnovni atributi.
+Naslovi se označavaju simbolima jednakosti (`=`).
+Više znakova znači nižu razinu naslova.
+
+```adoc
+Autor <email@domena.com>
+:revdate: 2025-11-06
+:doctype: article
+:toc:
+:sectnums:
+
+```
+
+== Formatiranje tekstFormatiranje teksta
+Tekst se može podebljati, nagnuti ili precrtati.
+
+```adoc
+*podebljano*, _kurziv_, [line-through]#Precrtano#
+```
+
+*podebljano*, _kurziv_, [line-through]#Precrtano#
+
+== Popisi
+Numerirani popisi koriste brojeve ili točke.
+```adoc
+. Numerirani popis
+.. Stavka 1
+.. Stavka 2
+```
+
+. Numerirani popis
+.. Stavka 1
+.. Stavka 2
+
+
+Nenumerirani popisi koriste zvjezdice ili crtice.
+
+```adoc
+* Nenumerirani popis
+** Stavka
+*** Podstavka
+```
+* Nenumerirani popis
+** Stavka
+*** Podstavka
+
+
+== Linkovi i slike
+Možete dodavati poveznice na web stranice te umetati slike iz lokalne mape projekta.
+
+link:https://www.unizd.hr[Sveučilište u Zadru]
+
+image::tiger.png[alt="Tigar", width=60%]
+
+image::ruby.svg[alt="Ruby", width=40%]
+
+
+== Citati i fusnote
+
+Citati se prikazuju u posebnom bloku, uz ime autora. footnote:[Navodi se koriste za izjave važnih osoba.]
+
+[quote, Alan Kay]
+____
+Najboli način da predvidiš budućnost je da je izmisliš.
+____
+
+Fusnote se dodaju na kraju rečenice i sadrže kratko objašnjenje. footnote:[Ovo je objašnjenje prethodnog teksta.]
+
+
+== Tablice
+Tablice omogućuju pregledno prikazivanje podataka u redovima i stupcima.
+Svaka ćelija odvaja se vertikalnom crtom (|).
+
+[cols="1,2", options="header"]
+|===
+| Element | Opis
+| Naslov | Definira glavni naslov dokumenta
+| `:toc:` | Dodaje sadržaj na početku dokumenta
+| `:sectnums:` | Numerira poglavlja automatski
+|===
+
+== Kod
+Blokovi koda koriste se za prikaz primjera u programskim jezicima.
+Mogu imati i oznaku jezika, npr. python ili bash.
+
+[source, python]
+----
+def pozdrav(ime):
+    print(f"Pozdrav, {ime}!")
+
+pozdrav("studenti")
+
+----
+
+== Napomene
+Posebni blokovi označavaju važne dijelove teksta, poput upozorenja ili savjeta.
+Primjeri su: TIP, NOTE, WARNING i IMPORTANT.
+
+[TIP]
+====
+Koristite Asciidoc kada želite pisati profesionalno uređenu dokumentaciju.
+====
+
+[WARNING]
+====
+Pripazite da se u istom dokumentu ne miješa `Markdown` i `Asciidoc`.
+====
+
+== Matematička anotacija i dijagrami
+
+=== Matematičke formule
+U Ascii možemo pisati složene matematičke izraze tj. formule o kojima brine `STEM` anotacijski paket.
+
+Slavna Einsteinova formula glasi: 
+[stem]
+++++
+E = mc^2
+++++
+
+[stem]
+\begin{bmatrix}
+a & b \\
+c & d \\
+\end{bmatrix}
+...
+
+=== Dijagrami
+
+[mermaid]
+----
+graph TD
+    A[Start] --> B{Je li ovo radi}
+    B --> |Yes| C[Odlično!]
+    D --> B
+    C --> E [End]
+----
+=== Graphviz
+
+[graphviz]
+----
+digraph G{
+    rankdir=LR;
+    node [shape=box, style=rounded];
+
+    Fronted -> Backend [label="API"];
+    Backend -> Database [label="uery"];
+}
+----
+
+== Zaključak
+AsciiDoc kombinira jednostavnost običnog teksta s mogućnostima profesionalnog oblikovanja. Kada savladate osnovnu sintaksu, lako možete izvesti dokument u HTML ili PDF oblik i objaviti ga putem GitHub-a.
+
+
